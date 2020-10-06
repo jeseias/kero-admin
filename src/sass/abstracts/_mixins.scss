@@ -1,0 +1,51 @@
+@mixin AbosoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin Shadow($top, $left, $spread, $blur, $opac) {
+  box-shadow: $top $left $spread $blur rgba($color-black, $opac);
+}
+
+@mixin GridCenter {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+@mixin Link {
+
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@mixin Transition { transition: All ease-in-out .25s };
+
+@mixin HoverActive {
+  @include Transition;
+
+  &:hover {
+    transform: translateY(-2px);
+    @include Shadow(0, 0, .4rem, .2rem, .3);
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(1px);
+    @include Shadow(0, 0, .2rem, .1rem, .4);
+  }
+}
+
+@mixin BGLinear {
+  background: linear-gradient(
+    to right bottom,
+    $color-primary-light,
+    $color-primary-dark,
+  );
+}
