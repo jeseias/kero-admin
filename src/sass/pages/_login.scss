@@ -1,0 +1,36 @@
+.login {
+
+  &__box {
+    @include CenterAbsolute(30%, 50%);
+    background: $color-dark;
+    padding: 1rem;
+    text-align: center;
+    width: 40rem;
+  }
+
+  &__logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  &__button {
+    padding: 1rem 2rem;
+    border: none;
+    color: $color-white;
+    background: $color-primary-light;
+    width: 10rem;
+    border-radius: 2px;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @include Transition;
+
+    &:hover {
+      cursor: pointer;
+      background: $color-primary; 
+    }
+  }
+}

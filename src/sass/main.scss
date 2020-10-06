@@ -4,11 +4,13 @@
 @import "base/base";
 @import "base/typografy";
 
-@import "layouts/sidebar";
-@import "layouts/navigation";
-
 @import "components/product-card";
 @import "components/alert";
 @import "components/modal";
 @import "components/form";
-@import "components/button"
+@import "components/button";
+
+@import "layouts/sidebar";
+@import "layouts/navigation";
+
+@import "pages/login";

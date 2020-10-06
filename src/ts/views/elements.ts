@@ -8,5 +8,15 @@ export default {
     nav: {
       links: <HTMLAnchorElement[]>Array.from($$(`aside .nav__link`))
     }
+  },
+
+  pages: {
+    login: {
+      form: {
+        self: <HTMLFormElement>GEBI('login'),
+        email: <HTMLInputElement>GEBI('login-email'),
+        password: <HTMLInputElement>GEBI('login-password'),
+      }
+    }
   }
 }

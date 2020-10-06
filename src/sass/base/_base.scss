@@ -22,12 +22,8 @@ body {
   .page {
     display: none;
     min-width: 100%; 
-    min-height: calc(100vh - 4rem); 
-
-    @include respond($bp-largest) {
-      right: 2rem;
-      top: 2rem;
-    }
+    min-height: 100vh;  
+    background: $color-grey-light-2;
 
     &.visible {
       display: grid;

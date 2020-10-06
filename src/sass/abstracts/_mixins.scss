@@ -5,6 +5,13 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin CenterAbsolute($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate(-50%, -50%);
+}
+
 @mixin PositionAbsolute($top, $left) {
   position: absolute;
   top: $top;
