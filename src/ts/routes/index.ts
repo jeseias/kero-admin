@@ -2,6 +2,8 @@ import PageCtrl from './PageControllers'
 
 import DOM, { GEBI, $ } from '../views/elements' 
 
+import { Admin } from '../constants/interfaces'
+
 const setHash: (hash: string) => void = 
   (hash) => window.location.hash = hash;
 
@@ -43,8 +45,10 @@ export const pageLoader: () => void = () => {
     window.addEventListener(event, async () => {
       const allPages = ['login', 'home', '']
       let hash = window.location.hash.replace('#', '')
+      const loggedAdmin: Admin = JSON.parse(localStorage.getItem('kero-admin')!)
 
       if (!allPages.includes(hash)) return switchPage('error')
+      if (!loggedAdmin) return await switchPage('login')
 
       hash === '' 
         ? (hash = 'login', setHash('login')) 
