@@ -1,10 +1,19 @@
 // COLORS
-$color-primary: #d39d38;
-$color-primary-light: #ffe47a;
-$color-primary-dark: #b4842b;
+$color-primary: #298143;
+$color-primary-light: #3aa75b;
+$color-primary-dark: #20773a;
+
+$color-secondary: #f1e31c;
+$color-secondary-light: #c5b804;
+$color-secondary-dark: #c5b804;
+
+$color-red: rgb(223, 71, 71);
 
 $color-grey: #ccc;
-$color-grey-light: #f2f2f2;
+$color-grey-light: #f1f1f1;
+$color-grey-light-1: #faf9f9;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
 $color-grey-dark: #555;
 
 $color-dark: #333;
@@ -12,4 +21,15 @@ $color-dark: #333;
 $color-black: #000;
 $color-white: #fff;
 
-// FONTS
+// Break points
+$bp-largest: 64em; // 1024px
+$bp-large: 61.44em; // 983px
+$bp-large-2: 59.93em; // 983px
+$bp-big: 48em; // 768px
+$bp-big-2: 42em; // 672px
+$bp-medium: 35.50em; // 568px
+$bp-small: 27.06em; // 433px
+$bp-small-2: 26.56em; // 425px
+$bp-smallest: 28.125em; // 450px
+$bp-tiny: 24.3125em; // 389px
+$bp-tinyest: 21.5em; // 344px

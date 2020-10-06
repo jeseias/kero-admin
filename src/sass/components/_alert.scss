@@ -1,0 +1,29 @@
+.alert {
+  display: block;
+  padding: 1rem 2rem;
+  text-align: center;
+  position: fixed;
+  margin: 0 auto;
+  color: $color-white;
+  top: -101%;
+  font-size: 1.7rem;
+  max-width: 60rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-left-radius: 4px; 
+  border-bottom-right-radius: 4px; 
+  @include Transition;
+  
+  &.visible {
+    z-index: 2000000000;
+    top: 0;
+  }
+
+  &--success {
+    background: rgb(53, 126, 92);
+  }
+
+  &--fail {
+    background:rgb(236, 75, 75);
+  }
+}

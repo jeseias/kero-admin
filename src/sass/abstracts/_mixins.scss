@@ -5,14 +5,51 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin PositionAbsolute($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin Flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @mixin Shadow($top, $left, $spread, $blur, $opac) {
   box-shadow: $top $left $spread $blur rgba($color-black, $opac);
+}
+
+@mixin ProductContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 24.9rem));
+  grid-template-rows: repeat(auto-fit, minmax(5rem, 30.5rem));  
+  grid-gap: 1rem;
+  // justify-content: space-between;
+
+  @include respond($bp-small) {
+    grid-template-columns: 1fr;
+  }
 }
 
 @mixin GridCenter {
   display: grid;
   justify-content: center;
   align-content: center;
+}
+
+@mixin MR($length) {
+  &:not(:last-child) {
+    margin-right: $length;
+  }
+}
+
+@mixin Outline {
+  // border-radius: 1rem;
+  // border: 1px solid $color-grey;
+  padding: 1rem;
+  box-shadow: 0 0 1rem rgba($color-dark, .15);
 }
 
 @mixin Link {
@@ -48,4 +85,8 @@
     $color-primary-light,
     $color-primary-dark,
   );
+}
+
+@mixin respond($width) {
+  @media only screen and (max-width: $width) { @content };
 }

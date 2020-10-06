@@ -1,0 +1,31 @@
+.form-element {
+  display: block;
+  width: 100%;
+  padding: .5rem 1rem;
+  color: $color-dark;
+  margin-bottom: .5rem;
+  font-size: 1.6rem;
+  border: none;
+  background: $color-grey-light-3;
+  border-bottom: 2px solid transparent;
+
+  @include Transition;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary; 
+  }
+
+  &[type="submit"] {
+    background: $color-primary;
+    color: $color-white;
+  
+    @include GridCenter;
+    @include Transition;
+
+    &:hover {
+      cursor: pointer;
+      background: lighten($color: $color-primary, $amount: 10);
+    }
+  }
+}

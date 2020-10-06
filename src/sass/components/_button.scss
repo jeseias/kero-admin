@@ -1,0 +1,14 @@
+.btn {
+  width: 20rem;
+  background: $color-dark;
+  color: $color-white;
+  padding: .5rem 1rem;
+  border: none;
+
+  @include Transition;
+
+  &:hover {
+    background: $color-primary;
+    cursor: pointer;
+  }
+}

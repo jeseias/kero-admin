@@ -1,0 +1,86 @@
+.product-card {
+  @include Outline;
+  padding: 1rem 2rem;
+  background: lighten($color: $color-grey-light, $amount: 5);
+  position: relative;
+
+  &--selected {
+    border: 2px solid $color-primary;
+  }
+
+  &__img {
+    display: block;
+    margin: 0 auto 1rem auto;
+    height: 19rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__name {
+    color: $color-dark;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__summary {
+    padding: 1rem 0;
+  }
+
+  &__footer {
+    display: flex;
+  }
+
+  &__price {
+    color: $color-dark;
+    font-weight: bold;
+    margin-right: auto;
+    font-size: 1.5rem;
+  } 
+
+  &__cart {
+    color: $color-primary;
+    font-weight: bold;
+
+    @include Transition;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    &--icon {
+      width: 1.8rem;
+      height: 1.8rem;
+      fill: $color-primary;
+    }
+  }
+
+  &__settings {
+    @include PositionAbsolute(15.5rem, auto);
+    @include GridCenter;
+    @include Transition;
+    right: 1.5rem;
+    background: $color-red;
+    fill: $color-white;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: .1rem;
+    opacity: 0;
+    width: 2.5rem;
+    height: 4rem;
+
+    &:hover {
+      cursor: pointer;
+      background: darken($color: $color-red, $amount: 3);
+    }
+  }
+
+  &:hover &__settings {
+    opacity: 1;
+  } 
+
+  @include respond($bp-small) {
+    padding: 1rem;
+  }
+}
