@@ -58,5 +58,5 @@ export const loginAdmin: (email: string, password: string) => Promise<void> = as
 
   saveUser(Admin)
 
-  App.toPage('home')
+  App.toPage('orders')
 }

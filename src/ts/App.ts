@@ -14,7 +14,7 @@ class App {
     }
   }
 
-  public toPage (page: 'login' | 'home') {
+  public toPage (page: string) {
     switchPage(page)
   }
 

@@ -1,4 +1,5 @@
 .login {
+  z-index: 100;
 
   &__box {
     @include CenterAbsolute(30%, 50%);

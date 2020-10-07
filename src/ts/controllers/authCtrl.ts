@@ -4,7 +4,7 @@ import DOM from '../views/elements'
 import { userInputNotifacation } from '../views/View'
 
 export const loginCtrl: () => void = () => {
-  const { form: { self: form, email, password } } = DOM.pages.login
+  const { form: { self: form, email, password } } = DOM.loginPage
   
   form.addEventListener('submit', async (e: Event) => {
     (function(w) {

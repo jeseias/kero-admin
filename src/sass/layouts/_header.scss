@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+
+  color: $color-dark;
+  padding: 0 1rem;
+
+  .logo {
+    font-size: 3rem;
+
+    @include GridCenter;
+  }
+
+  .user {
+    @include Flex;
+
+    &__name {
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    &__img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 100%;
+      border: 2px solid $color-primary;
+      margin: .5rem;
+    }
+
+    &__icon {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+}

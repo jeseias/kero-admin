@@ -1,0 +1,18 @@
+aside.aside
+  nav.nav
+    ul.nav__list
+      - 
+        const links = [
+          { name: 'Encomendas', link: 'orders', icon: 'icon' },
+          { name: 'Produtos', link: 'products', icon: 'icon' },
+          { name: 'Clientes', link: 'clients', icon: 'icon' },
+          { name: 'Mensagens', link: 'messages', icon: 'icon' }
+        ]
+      
+      each link in links
+        li.nav__item 
+          a.nav__link(href=`#${link.link}`)
+            span= link.name
+            svg.nav__icon
+              use(xlink:href=`assets/img/icons/sprite.svg#${link.icon}`)    
+            

@@ -7,5 +7,14 @@ html(lang="en")
   body
     // - Main Content
     include pages/login
-    include pages/home
     include pages/error
+
+    .pages
+      include layouts/aside
+      include layouts/header
+
+      .pages__container
+        include pages/orders
+        include pages/products
+        include pages/clientes
+        include pages/messages

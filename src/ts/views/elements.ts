@@ -10,13 +10,19 @@ export default {
     }
   },
 
+  loginPage: {
+    self: <HTMLDivElement>GEBI(`login`),
+    form: {
+      self: <HTMLFormElement>GEBI('form-login'),
+      email: <HTMLInputElement>GEBI('login-email'),
+      password: <HTMLInputElement>GEBI('login-password'),
+    }
+  },
+
   pages: {
-    login: {
-      form: {
-        self: <HTMLFormElement>GEBI('login'),
-        email: <HTMLInputElement>GEBI('login-email'),
-        password: <HTMLInputElement>GEBI('login-password'),
-      }
+    self: <HTMLDivElement>$(`.pages`),
+    orders: {
+      self: <HTMLDivElement>GEBI(`ordes`)
     }
   }
 }
