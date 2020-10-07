@@ -1,4 +1,5 @@
 import { pageLoader, switchPage } from './routes/index'
+import { setUpHeader } from './controllers/headerCtrl'
 
 import { IApp,  } from './constants/interfaces'
  
@@ -20,6 +21,7 @@ class App {
 
   public init() {
     pageLoader()
+    setUpHeader()
   }
 }
 
