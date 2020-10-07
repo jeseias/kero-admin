@@ -17,13 +17,12 @@ const setHash: (hash: string) => void = hash => {
 
 export const setNavItemActive: (hash: string) => void = (hash) => {
   const { links } = DOM.aside.nav
-  const activeClass = 'nav__item--active'
-
+  const activeClass = 'nav__link--active'
 
   links.forEach(link => {
     link.hash.replace('#', '') !== hash
-      ? link.parentElement!.classList.remove(activeClass)
-      : link.parentElement!.classList.add(activeClass)
+      ? link.classList.remove(activeClass)
+      : link.classList.add(activeClass)
   })
 }
 
@@ -56,8 +55,6 @@ export const pageLoader: () => void = () => {
       const allPages = ['login', 'orders', 'messages', 'clients', 'products']
       let hash = window.location.hash.replace('#', '') 
       const loggedAdmin: IAdmin = JSON.parse(localStorage.getItem('kero-admin')!)
-
-      console.log('james', hash)
 
       hash === '' 
         ? (hash = 'login', setHash('login')) 

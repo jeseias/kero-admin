@@ -3,10 +3,10 @@ aside.aside
     ul.nav__list
       - 
         const links = [
-          { name: 'Encomendas', link: 'orders', icon: 'icon' },
-          { name: 'Produtos', link: 'products', icon: 'icon' },
-          { name: 'Clientes', link: 'clients', icon: 'icon' },
-          { name: 'Mensagens', link: 'messages', icon: 'icon' }
+          { name: 'Encomendas', link: 'orders', icon: 'home' },
+          { name: 'Produtos', link: 'products', icon: 'home' },
+          { name: 'Clientes', link: 'clients', icon: 'home' },
+          { name: 'Mensagens', link: 'messages', icon: 'home' }
         ]
       
       each link in links
@@ -14,5 +14,5 @@ aside.aside
           a.nav__link(href=`#${link.link}`)
             span= link.name
             svg.nav__icon
-              use(xlink:href=`assets/img/icons/sprite.svg#${link.icon}`)    
+              use(xlink:href=`src/assets/SVGs/sprite.svg#icon-${link.icon}`)    
             

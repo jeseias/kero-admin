@@ -11,24 +11,40 @@
 
     &__item {
       width: 100%;
-      padding: 2rem;
       color: $color-dark;
-
-      &--active {
-        border-left: 2px solid $color-primary;
-        color: $color-primary;
-      }
     }
 
     &__link {
-      @include Link;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+
       font-weight: bold;
       font-size: 1.5rem;
+      padding: 1rem 2rem;
+      border-left: 2px solid transparent;
+      margin-bottom: 2px;
+      
+      @include Link;
+      @include Transition;
+
+      &:hover, &--active {
+        border-color: $color-primary;
+        color: $color-primary !important;
+        cursor: pointer; 
+
+        svg {
+          fill: $color-primary;
+        }
+      }  
     }
 
     &__icon {
       width: 2rem;
       height: 2rem;
+      fill: $color-dark;
+
+      @include Transition;
     }
   }  
 }

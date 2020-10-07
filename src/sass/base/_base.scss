@@ -25,11 +25,11 @@ body {
     &.visible {
       width: 100%;
       height: 100%;
-      max-width: 144rem;
-      max-height: 76rem;
+      max-width: 122rem;
+      max-height: 68rem;
 
       display: grid;
-      grid-template-columns: 26rem 1fr;
+      grid-template-columns: 22rem 1fr;
       grid-template-rows: 6.6rem 1fr;
       grid-template-areas: 
         "aside header"
