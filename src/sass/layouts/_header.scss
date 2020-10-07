@@ -14,6 +14,7 @@
 
   .user {
     @include Flex;
+    position: relative;
 
     &__name {
       font-weight: bold;
@@ -24,13 +25,60 @@
       width: 5rem;
       height: 5rem;
       border-radius: 100%;
-      border: 2px solid $color-primary;
       margin: .5rem;
     }
 
     &__icon {
       width: 1.8rem;
       height: 1.8rem;
+      color: $color-dark;
+
+      @include Transition;
+
+      &:hover {
+        cursor: pointer;
+        fill: $color-primary;
+      }
+    }
+
+    &__menu {
+      list-style: none;
+
+      position: absolute;
+      width: 20rem;
+      right: 0rem;
+      top: 7rem;
+      opacity: 0;
+      z-index: -111;
+      display: none;
+
+      border-radius: .2rem;
+      box-shadow: 0 0 1rem rgba($color-dark, .35);
+      background: $color-white;
+      color: $color-dark;
+
+      @include Transition;
+
+      &.visible {
+        display: block;
+        z-index: 1000;
+        opacity: 1;
+        top: 5rem;
+      }
+
+      &__item {
+        padding: .5rem;
+        font-weight: bold;
+        display: block;
+        
+        @include Transition;
+  
+        &:hover {
+          background: $color-dark;
+          color: $color-white;
+          cursor: pointer;
+        } 
+      }
     }
   }
 }

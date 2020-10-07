@@ -16,7 +16,8 @@ export default {
     user: {
       name: <HTMLParagraphElement>$(`${header} .user p.user__name`),
       img: <HTMLImageElement>$(`${header} .user img.user__img`),
-      menuBtn: <HTMLElement>$(`${header} .user svg.user__icon`)
+      menuBtn: <HTMLElement>$(`${header} .user svg.user__icon`),
+      menu: <HTMLDivElement>$(`${header} .user .user__menu`)
     }
   },
 

@@ -31,8 +31,8 @@ export const menuToggler: (btn: HTMLElement, menu: HTMLElement, type: 'user' | '
     }, 100)
   })
 
- menu.addEventListener('mouseleave', () => {
-   menu.classList.remove('visible')
+  menu.addEventListener('mouseleave', () => {
+    menu.classList.remove('visible')
   })
 }
 
