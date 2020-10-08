@@ -4,6 +4,8 @@ export const GEBI = document.getElementById.bind(document)
 export const GEBC = document.getElementsByClassName.bind(document)
 
 const header = `header.header`
+const orders = `.page.orders#orders`
+const products = `.page.products#products`
 
 export default {
   aside: {
@@ -33,7 +35,11 @@ export default {
   pages: {
     self: <HTMLDivElement>$(`.pages`),
     orders: {
-      self: <HTMLDivElement>GEBI(`ordes`)
+      self: <HTMLDivElement>GEBI(`orders`)
+    },
+    products: {
+      self: <HTMLDivElement>GEBI(`orders`),
+      allProducts: <HTMLDivElement>$(`${products} .products__all`)
     }
   }
 }

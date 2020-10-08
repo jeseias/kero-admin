@@ -18,6 +18,7 @@ html, body {
 
 body {
   box-sizing: border-box; 
+  overflow: hidden;
 
   .pages {
     display: none;
@@ -40,15 +41,19 @@ body {
       @include Shadow(0, 0, 3rem, .2rem, .25);
     }
 
-    .aside { grid-area: aside }
-    .header { grid-area: header }
-    &__container { grid-area: container }
+    .aside { grid-area: aside; }
+    .header { grid-area: header; }
+    
+    &__container { 
+      grid-area: container;
+      overflow-y: hidden;
+    }
   }
 
   .page {
     display: none;
-    min-width: 100%; 
-    min-height: 100%;  
+    width: 100%; 
+    max-height: 100%;  
     background: $color-grey-light-2;
 
     &.visible {

@@ -1,3 +1,3 @@
-export const ordersPageCtrl: () => Promise<void> = async () => {
-
+export const ordersPageCtrl: () => Promise<void> = async () => { 
+  
 }

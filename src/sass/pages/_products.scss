@@ -1,0 +1,51 @@
+.products {
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+  padding-bottom: 1rem;
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-content: center;
+    padding: 1rem;
+
+    border-bottom: 4px solid $color-dark;
+    @include Shadow(0, 0, 1rem, 1rem, .25);
+  }
+
+  &__add-btn {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-content: center;
+    align-items: center;
+    padding: .2rem .6rem;
+    background: $color-white;
+    border: 2px solid $color-dark;
+    color: $color-dark;
+    font-weight: bold;
+
+    @include Transition;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: currentColor; 
+      margin-right: .5rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-primary;
+      border-color: $color-primary; 
+    }
+  }
+
+  &__all {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    padding: 2rem;
+
+    overflow-y: scroll;
+  }
+}
