@@ -4,8 +4,15 @@ import DOM from '../views/elements'
 import { textShorter, addChildren } from '../views/View'
 
 export const mountProducts: (products: IProject[]) => void = products => {
-  const { allProducts } = DOM.pages.products
+  const { 
+    allProducts,
+    header: { itemsLength } 
+  } = DOM.pages.products
 
+  // 1) Display Data
+  itemsLength.textContent = `${products.length} Productos cadastrados`
+
+  // 2) Display All products
   const temp: (data: IProject) => string = data => `
     <div class="product-card" id="product-${data.id}">
       <div class="product-card__img" style="background-image: url(${data.img__url})"></div>
@@ -17,8 +24,6 @@ export const mountProducts: (products: IProject[]) => void = products => {
       </div>
     </div>  
   `
-
-  console.log(allProducts)
 
   addChildren(allProducts, products, temp, 'afterbegin')
 } 

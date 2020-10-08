@@ -39,7 +39,10 @@ export default {
     },
     products: {
       self: <HTMLDivElement>GEBI(`orders`),
-      allProducts: <HTMLDivElement>$(`${products} .products__all`)
+      allProducts: <HTMLDivElement>$(`${products} .products__all`),
+      header: {
+        itemsLength: <HTMLParagraphElement>$(`${products} .info .items`)
+      }
     }
   }
 }
