@@ -57,7 +57,7 @@ export const pageLoader: () => void = () => {
       const loggedAdmin: IAdmin = JSON.parse(localStorage.getItem('kero-admin')!)
 
       hash === '' 
-        ? (hash = 'login', setHash('login')) 
+        ? (hash = 'orders', setHash('orders')) 
         : hash
 
       if (!allPages.includes(hash)) return switchPage('error')

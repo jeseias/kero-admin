@@ -1,0 +1,46 @@
+.orders {
+
+  &__header {
+    @include HeaderBottomLine;
+
+    .info {
+
+      .length {
+        font-weight: bold;
+        font-size: 2rem;
+        color: $color-dark;
+        margin: 1rem;
+      }
+    }
+  }
+
+  &__badge {
+    display: inline-block; 
+    font-weight: bold;
+    font-size: 1rem;
+    padding: .4rem .9rem;
+    border-radius: 2px;
+    color: $color-white;
+    text-align: center;
+    margin: 1rem;
+
+    @include Transition;
+    
+    &--complete {
+      background: $color-primary;
+    }
+
+    &--active {
+      background: $color-secondary;
+    }
+
+    &--done {
+      background: $color-red;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale((1.04));
+    }
+  }
+}

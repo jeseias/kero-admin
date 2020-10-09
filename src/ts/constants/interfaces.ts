@@ -45,3 +45,22 @@ export interface IAuthRes<T> {
     user: T
   }
 }
+
+export interface IOrder {
+  createdAt: string
+  location: {
+    apartment: string
+    entrace: string
+    block: number
+    building: number
+  }
+  products: {
+    price: number
+    productID: string
+    _id: string
+  }[]
+  state: 'sent' | 'complete' | 'active'
+  total: number
+  user: string
+  _id: string 
+}

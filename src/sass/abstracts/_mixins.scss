@@ -5,6 +5,11 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin HeaderBottomLine {
+  border-bottom: 4px solid $color-dark;
+  @include Shadow(0, 0, 3rem, .5rem, .25);
+}
+
 @mixin CenterAbsolute($top, $left) {
   position: absolute;
   top: $top;

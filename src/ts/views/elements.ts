@@ -35,7 +35,14 @@ export default {
   pages: {
     self: <HTMLDivElement>$(`.pages`),
     orders: {
-      self: <HTMLDivElement>GEBI(`orders`)
+      self: <HTMLDivElement>GEBI(`orders`),
+      header: {
+        itemsLength: <HTMLParagraphElement>$(`${orders} .orders__header .info .length`),
+        badgeComplete: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--complete`),
+        badgeActive: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--active`),
+        badgeDone: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--done`)
+      },
+      allOrders: <HTMLDivElement>$(`${orders} .orders__all`)
     },
     products: {
       self: <HTMLDivElement>GEBI(`orders`),
