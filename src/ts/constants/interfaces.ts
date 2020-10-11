@@ -47,7 +47,7 @@ export interface IAuthRes<T> {
 }
 
 export interface IOrder {
-  createdAt: string
+  createdAt: Date
   location: {
     apartment: string
     entrace: string
@@ -57,10 +57,16 @@ export interface IOrder {
   products: {
     price: number
     productID: string
+    quantity: number
     _id: string
   }[]
   state: 'sent' | 'complete' | 'active'
   total: number
-  user: string
-  _id: string 
+  user: {
+    id: string 
+    img__url: string 
+    name: string
+    phone: number
+  }
+  _id: string  
 }
