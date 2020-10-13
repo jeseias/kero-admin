@@ -1,0 +1,46 @@
+.messages {
+  grid-template-rows: 6rem 1fr;
+  height: 100%;
+
+  &__header {
+
+    @include HeaderBottomLine;
+  }
+
+  &__all {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(auto-fit, minmax(8rem, 8rem));
+    grid-gap: 2rem;
+
+    padding: 2rem;
+    height: 100%;
+
+    .message-card {
+      background: $color-white;
+
+      @include Outline;
+
+      &__name {
+        display: inline-block;
+        width: auto;
+        color: $color-dark;
+        margin-right: 2rem;
+      }
+
+      &__badge {
+        background: $color-dark;
+        color: $color-white;
+        border-radius: 2px;
+        font-weight: bold;
+        padding: .3rem .5rem;
+      }
+
+      &__text {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

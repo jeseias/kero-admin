@@ -7,6 +7,7 @@ const header = `header.header`
 const orders = `.page.orders#orders`
 const products = `.page.products#products`
 const clients = `.page.clients#clients`
+const messages = `.page.messages#messages`
 
 export default {
   aside: {
@@ -58,6 +59,13 @@ export default {
         totalClients: <HTMLParagraphElement>$(`${clients} .clients__total`)
       },
       allClientesContainer: <HTMLDivElement>$(`${clients} .clients__all`)
+    },
+    messages: {
+      self: <HTMLDivElement>GEBI(`messages`),
+      header: {
+        totalMessages: <HTMLParagraphElement>$(`${messages} .messages__total`)
+      },
+      allMessagesContainer: <HTMLDivElement>$(`${messages} .messages__all`)
     }
   }
 }
