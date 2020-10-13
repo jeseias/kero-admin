@@ -1,0 +1,39 @@
+.clients {
+  grid-template-rows: max-content 1fr;
+  height: 100%;
+
+  &__header {
+    padding: 1rem;
+    @include HeaderBottomLine; 
+  }
+
+  &__all {
+    padding: 4rem 2rem 1rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 22rem));
+    justify-content: center;
+    grid-template-rows: repeat(auto-fit, minmax(15rem, 20rem));
+    grid-gap: 2rem;
+    overflow-y: scroll;
+
+    .user-card {
+      text-align: center;
+      @include Outline;
+      background: $color-white;
+
+      &__img {
+        display: block;
+        width: 10rem;
+        height: auto;
+        border-radius: 100%;
+        margin: 1rem auto;
+      }
+
+      &__name {
+        border-bottom: 2px solid $color-dark;
+        padding-bottom: .5rem;
+        margin-bottom: .5rem;
+      }
+    }
+  }
+}

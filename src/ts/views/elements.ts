@@ -6,6 +6,7 @@ export const GEBC = document.getElementsByClassName.bind(document)
 const header = `header.header`
 const orders = `.page.orders#orders`
 const products = `.page.products#products`
+const clients = `.page.clients#clients`
 
 export default {
   aside: {
@@ -50,6 +51,13 @@ export default {
       header: {
         itemsLength: <HTMLParagraphElement>$(`${products} .info .items`)
       }
+    },
+    clients: {
+      self: <HTMLDivElement>GEBI(`clients`),
+      header: {
+        totalClients: <HTMLParagraphElement>$(`${clients} .clients__total`)
+      },
+      allClientesContainer: <HTMLDivElement>$(`${clients} .clients__all`)
     }
   }
 }

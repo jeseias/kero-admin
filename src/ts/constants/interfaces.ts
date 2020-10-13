@@ -24,13 +24,17 @@ export interface IProject {
   updatedAt: string
 }
 
-export interface IAdmin {
+export interface IUser {
   name: string
   email: string
   phone: number 
-  token: string 
   img__url: string 
   role: string 
+}
+
+export interface IAdmin extends IUser { 
+  role: 'admin' 
+  token: string 
 }
 
 export interface AdminLogin {
