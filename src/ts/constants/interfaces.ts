@@ -4,8 +4,7 @@ export interface IApp {
 
 export interface IMessage {
   name: string 
-  email: string 
-  phone: number 
+  number: number 
   message: string  
 }
 

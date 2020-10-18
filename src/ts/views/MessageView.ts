@@ -18,8 +18,7 @@ const showAllMessages: (messages: IMessage[]) => Promise<void> = async (messages
     return `
       <div class="message-card"> 
         <h2 class="message-card__name">${data.name}</h2>
-        <span class="message-card__badge">${data.name}</span>
-        <span class="message-card__badge">${data.phone}</span>
+        <span class="message-card__badge">${data.number}</span>
         <p class="message-card__text">${data.message}</p>
       </div>
     `

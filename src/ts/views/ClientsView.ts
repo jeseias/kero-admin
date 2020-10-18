@@ -19,7 +19,7 @@ const showAllUser: (clients: IUser[]) => Promise<void> = async (clients) => {
         <img class="user-card__img" src="${data.img__url}"/>
         <h2 class="user-card__name">${data.name}</h2>
         <p class="user-card__email">${data.email}</p>
-        <p class="user-card__phone">${data.phone}</p>
+        <p class="user-card__phone">${data.phone ? data.phone : '--- --- ---'}</p>
       </div>
     `
   }
