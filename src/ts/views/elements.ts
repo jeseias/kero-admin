@@ -9,6 +9,14 @@ const products = `.page.products#products`
 const clients = `.page.clients#clients`
 const messages = `.page.messages#messages`
 
+export const afterDOM = {
+  pages: {
+    orders: {
+      allOrders: () => <HTMLDivElement[]>Array.from($$(`${orders} .orders__all .order`))
+    }
+  }
+}
+
 export default {
   aside: {
     nav: {

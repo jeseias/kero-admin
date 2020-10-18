@@ -5,14 +5,14 @@ import DOM, { $$ } from './elements'
 
 import { IOrder } from '../constants/interfaces'
 
-const setUpHeader: (total: number, complete: number, active: number, done: number) => void = 
+export const setUpHeader: (total: number, complete: number, active: number, done: number) => void = 
   (total, complete, active, done) => {
     const { itemsLength, badgeActive, badgeComplete, badgeDone } = DOM.pages.orders.header
 
     itemsLength.textContent = `${total} Encomendas no total`
     badgeComplete.textContent = `${complete} Encomendas já entregas`
     badgeActive.textContent = `${active} Encomendas sendo entregas`
-    badgeDone.textContent = `${done} Encomendas ainda por fazer`
+    badgeDone.textContent = `${done + active} Encomendas ainda por fazer`
   }
 
 const showAllOrders: (orders: IOrder[]) => Promise<void> = async orders => {
@@ -26,7 +26,7 @@ const showAllOrders: (orders: IOrder[]) => Promise<void> = async orders => {
     const state = order.state === 'active' ? 'active' : order.state === 'complete' ? 'complete' : 'done'
 
     return `
-      <div class="order">
+      <div class="order" id="${order._id}">
         <div class="order__user">
           <div>
             <img class="order__user__img" src="${user.img__url}"/>
@@ -56,30 +56,59 @@ const showAllOrders: (orders: IOrder[]) => Promise<void> = async orders => {
           <span> </span>
           <span>Total: ${order.total} AKZ</span>
         </div>
+        ${order.state === 'complete'
+          ? `
+            <div class="order__settings">
+              <button id="active-order" 
+                disabled
+                title="Encomenda ja foi conluida"
+                data-state="${order.state}" 
+                class="complete"
+              >AV</button>
+              <button 
+                id="complete-order" 
+                disabled
+                title="Encomenda ja foi conluida"
+                class="complete"
+              >CT</button>
+              <button id="eliminate-order">EM</button>
+            </div>
+          ` : `
+            <div class="order__settings">
+              <button id="active-order" 
+                data-state="${order.state}" 
+                class="${order.state === 'active' ? 'active' : ''}"
+              >AV</button>
+              <button id="complete-order">CT</button>
+              <button id="eliminate-order">EM</button>
+            </div>
+          `
+        }
       </div>
     `
   }
 
   removeChildren(allOrders)
-  orders.forEach(async (order, i) => {
+  orders.forEach(async order => {
     const temp = await tempGenerator(order)
 
     allOrders.insertAdjacentHTML('afterbegin', temp) 
   })
 }
 
-export const mountOrdersPage: (orders: IOrder[]) => Promise<void> = async orders => {
+export const getOrdersDetails: (orders: IOrder[]) => number[] = orders => {
   const completeOrders = orders.filter(order => order.state === 'complete')
-  const acitveOrders = orders.filter(order => order.state === 'active')
+  const activeOrders = orders.filter(order => order.state === 'active')
   const doneOrders = orders.filter(order => order.state === 'sent')
 
+  return [orders.length, completeOrders.length, activeOrders.length, doneOrders.length]
+}
+
+export const mountOrdersPage: (orders: IOrder[]) => Promise<void> = async orders => { 
+  const [total, complete, active, done] = getOrdersDetails(orders)
+
   // 1) Set up the header first
-  setUpHeader(
-    orders.length,
-    completeOrders.length,
-    acitveOrders.length,
-    doneOrders.length
-  )
+  setUpHeader(total, complete, active, done)
 
   // 2) Show all the orders
   showAllOrders(orders)

@@ -8,14 +8,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(auto-fit, 20rem);
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     overflow-y: scroll;
     padding: 2rem;
   }
 
   .order {
     display: grid;
-    grid-template-columns: 17rem 1fr;
+    grid-template-columns: 14rem 1fr 2.2rem;
     grid-template-rows: 1fr max-content;
     grid-gap: .5rem;
     background: $color-white;
@@ -51,6 +51,8 @@
       overflow-y: scroll;
       grid-column: 2/3;
       grid-row: 1/2;
+
+      border-bottom: 2px solid $color-dark;
     } 
 
     &__product {
@@ -59,6 +61,7 @@
       margin-bottom: .5rem;
       position: relative;
       border-radius: 2px;
+      overflow: hidden;
 
       &, & * { @include Transition; } 
 
@@ -139,6 +142,75 @@
       &--complete { border: 2px solid $color-primary; }
       &--active { border: 2px solid $color-secondary; }
       &--done { border: 2px solid $color-red; }
+    }
+
+    &__settings {
+      grid-column: 3/4;
+      grid-row: 1/-1;
+
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-around;
+      justify-content: center;
+
+      %btn-disabled {
+        &.complete {
+          background: $color-grey !important;
+          color: $color-white;
+          
+          &:hover {
+            transform: none;
+            box-shadow: none;
+            cursor: not-allowed;
+          }
+        }
+
+      }
+
+      & > * {
+        padding: .5rem;
+        border-radius: 100%;
+        color: $color-white;
+        border: none;
+        outline: none;
+
+        @include Transition;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.05);
+          @include Shadow(0, 0, .4rem, .2rem, .2);
+          outline: none;
+        }
+      }
+
+      & :first-child { 
+        background: $color-primary;
+        
+        &.active {
+          background: transparent;
+          color: $color-primary;
+          border: 2px solid $color-primary;
+        }
+
+        @extend %btn-disabled;
+      }
+
+      & :nth-child(2) { 
+        background: $color-secondary; 
+        
+        &.active {
+          background: transparent;
+          color: $color-secondary;
+          border: 2px solid $color-secondary;
+        }
+
+        @extend %btn-disabled;
+      }
+
+      & :nth-child(3) { 
+        background: $color-red; 
+      }
     }
   }
 
