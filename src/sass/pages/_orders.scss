@@ -157,7 +157,7 @@
         &.complete {
           background: $color-grey !important;
           color: $color-white;
-          
+
           &:hover {
             transform: none;
             box-shadow: none;
@@ -216,14 +216,40 @@
 
   &__header {
     @include HeaderBottomLine;
+    display: grid;
+    grid-template-columns: 80% 1fr;
+    grid-gap: 2rem;
 
-    .info {
+    &__info {
 
       .length {
         font-weight: bold;
         font-size: 2rem;
         color: $color-dark;
         margin: 1rem;
+      }
+    }
+
+    &__settings {
+      display: flex;
+      padding: 1rem;
+
+      button {
+        margin-top: auto;
+        margin-left: auto;
+        color: $color-dark;
+        padding: .4rem 2rem;
+        font-weight: bold;
+        border: 2px solid $color-dark;
+        border-radius: 2px;
+
+        @include Transition;
+
+        &:hover {
+          cursor: pointer;
+          border-color: $color-primary;
+          color: $color-primary;
+        }
       }
     }
   }

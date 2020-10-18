@@ -47,10 +47,11 @@ export default {
     orders: {
       self: <HTMLDivElement>GEBI(`orders`),
       header: {
-        itemsLength: <HTMLParagraphElement>$(`${orders} .orders__header .info .length`),
+        itemsLength: <HTMLParagraphElement>$(`${orders} .orders__header .length`),
         badgeComplete: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--complete`),
         badgeActive: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--active`),
-        badgeDone: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--done`)
+        badgeDone: <HTMLParagraphElement>$(`${orders} .orders__badge.orders__badge--done`),
+        refreshBtn: <HTMLButtonElement>$(`${orders} .orders__header__settings button`)
       },
       allOrders: <HTMLDivElement>$(`${orders} .orders__all`)
     },
