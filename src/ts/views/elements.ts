@@ -13,6 +13,15 @@ export const afterDOM = {
   pages: {
     orders: {
       allOrders: () => <HTMLDivElement[]>Array.from($$(`${orders} .orders__all .order`))
+    },
+    products: {
+      allProductCards: () => <HTMLDivElement[]>Array.from($$(`${products} .product-card`)),
+      editProductModal: {
+        changeImgInput: () => <HTMLInputElement>$(`.modal .form-edit-product__images input`),
+        imageCoverContainer: () => <HTMLImageElement>$(`.modal .form-edit-product__images img`),
+        updateBtn: () => <HTMLButtonElement>$(`.modal .form-edit-product__submit`),
+        productUpdateForm: () => <HTMLFormElement>$(`.modal form`)
+      }
     }
   }
 }

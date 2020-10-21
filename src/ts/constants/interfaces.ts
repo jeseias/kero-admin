@@ -8,7 +8,7 @@ export interface IMessage {
   message: string  
 }
 
-export interface IProject {
+export interface IProduct {
   category: string
   createdAt: string
   id: string

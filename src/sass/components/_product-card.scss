@@ -3,6 +3,7 @@
   padding: 1rem 2rem;
   background: lighten($color: $color-grey-light, $amount: 5);
   position: relative;
+  max-height: 31rem;
 
   &--selected {
     border: 2px solid $color-primary;
@@ -36,23 +37,17 @@
     font-weight: bold;
     margin-right: auto;
     font-size: 1.5rem;
-  } 
+  }  
 
-  &__cart {
-    color: $color-primary;
-    font-weight: bold;
+  &__edit, &__delete {
+    width: 2rem;
+    height: 2rem;
+    fill: $color-dark;
 
     @include Transition;
 
     &:hover {
       cursor: pointer;
-      text-decoration: underline;
-    }
-
-    &--icon {
-      width: 1.8rem;
-      height: 1.8rem;
-      fill: $color-primary;
     }
   }
 
