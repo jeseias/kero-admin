@@ -1,5 +1,7 @@
 import App from '../App'
 
+import { hideModal } from '../models/Modal'
+
 import { ProductsAPI, deleteProduct, editProduct, updateProduct } from '../models/Products'
 
 import { mountProducts } from '../views/ProductsView'
@@ -62,9 +64,14 @@ const productListenerCtrl: () => Promise<void> = async () => {
         data.append('category', category.selectedOptions[0].value)
         data.append('subcategory', subcategory.selectedOptions[0].value)
         data.append('top', top.selectedOptions[0].value)
-        data.append('summary', summary.textContent!)
+        data.append('summary', summary.value!)
 
         await updateProduct(id, data) 
+
+        // Reload the products page
+        App.toPage('products')
+        // Close the modal
+        hideModal()
       } else if (validated) {
         await updateProduct(id, {
           name: name.value,
@@ -72,8 +79,13 @@ const productListenerCtrl: () => Promise<void> = async () => {
           category: category.selectedOptions[0]!.value,
           subcategory: subcategory.selectedOptions[0]!.value,
           top: top.selectedOptions[0]!.value,
-          summary: summary.textContent!,
+          summary: summary.value!,
         })
+        
+        // Reload the products page
+        App.toPage('products')
+        // Close the modal
+        hideModal()
       }
     })
   }
