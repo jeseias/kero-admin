@@ -21,6 +21,13 @@ export const afterDOM = {
         imageCoverContainer: () => <HTMLImageElement>$(`.modal .form-edit-product__images img`),
         updateBtn: () => <HTMLButtonElement>$(`.modal .form-edit-product__submit`),
         productUpdateForm: () => <HTMLFormElement>$(`.modal form`)
+      },
+      newProduct: {
+        productForm: () => <HTMLFormElement>$(`.modal form#add-new-product`),
+        addProductBtn: () => <HTMLButtonElement>$('.modal form#add-new-product button[type="submit"]'),
+        newProductImgInput: () => <HTMLInputElement>$(`.modal .add-new-product__images input`),
+        newProductImgInputContainer: () => <HTMLInputElement>$(`.modal .add-new-product__images`),
+        newProductImg: () => <HTMLImageElement>$(`.modal .add-new-product__images img`),
       }
     }
   }
@@ -68,7 +75,8 @@ export default {
       self: <HTMLDivElement>GEBI(`orders`),
       allProducts: <HTMLDivElement>$(`${products} .products__all`),
       header: {
-        itemsLength: <HTMLParagraphElement>$(`${products} .info .items`)
+        itemsLength: <HTMLParagraphElement>$(`${products} .info .items`),
+        addBtn: <HTMLButtonElement>$(`${products} .products__add-btn`)
       }
     },
     clients: {

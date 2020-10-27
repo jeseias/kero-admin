@@ -83,19 +83,10 @@ const sendData: (route: string, data: any, msg: string, token?: string) => Promi
           alertUser(true, msg)
           return res.data
         }  
-      } else {
-        res = await api.post(route, data)
-  
-        const { status, data: resData } = res.data
-  
-        if (status === 'success') { 
-          alertUser(true, msg)
-          return res
-        } 
-      }
+      }  
+      
     } catch (err) {
       if (err.response) {
-        console.log(err)
         alertUser(false, err.response.data.message)
       } else {
         alertUser(false, err.message)

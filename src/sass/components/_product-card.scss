@@ -1,9 +1,9 @@
 .product-card {
   @include Outline;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   background: lighten($color: $color-grey-light, $amount: 5);
   position: relative;
-  max-height: 31rem;
+  max-height: 32.5rem;
 
   &--selected {
     border: 2px solid $color-primary;

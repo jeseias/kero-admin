@@ -33,3 +33,7 @@ export const updateProduct: (id: string, data: any) => Promise<void> = async (id
   await ProductsAPI.update(id, data, 'Producto atualizado com successo')
 }
 
+export const createProduct: (data: any) => Promise<void> = async (data) => {
+  await ProductsAPI.store(data, 'Produto criado com successo', App.AppData.loggedUser!.token)
+}
+
