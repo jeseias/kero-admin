@@ -97,7 +97,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
 
   const addNewProductCtrl: () => Promise<void> = async () => {
     addBtn.addEventListener('click', () => {
-			showModal(createProductModalTemp)
+			showModal(createProductModalTemp())
 
 			const form = productForm();
 			const name = <HTMLInputElement>form.querySelector('#add-product-name')

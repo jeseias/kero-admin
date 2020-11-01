@@ -7,9 +7,56 @@ import { showModal } from './Modal'
 import { GEBI } from '../views/elements'
 import { editProductModel } from '../views/ProductsView'
 
-import { IProduct } from '../constants/interfaces'
+import { IProduct, IProductItem } from '../constants/interfaces'
 
 export const ProductsAPI = new APICommunicator('/products')
+
+export const productsCategories: () => IProductItem[] = () => {
+  const electronics: IProductItem = {
+    name: ['eletronicos', 'Eletronicos'],
+    subCategories: [
+      'Computadores',
+      'Telas',
+      'Teclados',
+      'Cameras',
+      'Telefones'
+    ]
+  }
+
+  const food: IProductItem = {
+    name: ['alimentos', 'Alimentos'],
+    subCategories: [
+      'Fast Food',
+      'Doces',
+      'Salgados',
+      'Italianos'
+    ]
+  }
+
+  const materials: IProductItem = {
+    name: ['materias', 'Materias'],
+    subCategories: [
+      'Mesa',
+      'Piano',
+      'Pano',
+      'Tinta',
+    ]
+  }
+
+  const clothing: IProductItem = {
+    name: ['vestuarios', 'Vestuários'],
+    subCategories: [
+      'Chapeu',
+      'Camisolas',
+      'Calsas',
+      'Pijamas',
+      'Fatos',
+      'Social'
+    ]
+  }
+
+  return [electronics, food, materials, clothing]
+} 
 
 export const editProduct: (id: string) => Promise<void> = async id => {
   const product = await ProductsAPI.show<IProduct>(id)

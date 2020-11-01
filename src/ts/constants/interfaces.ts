@@ -23,6 +23,11 @@ export interface IProduct {
   updatedAt: string
 }
 
+export interface IProductItem {
+  name: [string, string],
+  subCategories: string[]
+}
+
 export interface IUser {
   name: string
   email: string

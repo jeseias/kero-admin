@@ -1,7 +1,9 @@
-import { IProduct } from '../constants/interfaces'
+import { productsCategories } from '../models/Products'
 
 import DOM from '../views/elements'
 import { textShorter, addChildren } from '../views/View'
+
+import { IProduct } from '../constants/interfaces'
 
 export const mountProducts: (products: IProduct[]) => void = products => {
 	const { 
@@ -35,100 +37,107 @@ export const mountProducts: (products: IProduct[]) => void = products => {
 	addChildren(allProducts, products, temp, 'afterbegin')
 } 
 
-export const editProductModel: (product: IProduct) => string = product => `
-	<form id="edit-product-form" class="form-edit-product">
-		<div class="form-edit-product__header">
-			<svg class="close">
-				<use xlink:href="src/assets/SVGs/sprite.svg#icon-circle-with-cross"></use>
-			</svg>
-		</div>
-		<div class="form-edit-product__inputs">
-			<label for="edit-product-name">Nome:</label>
-			<input class="form-element" type="text" value="${product.name}" id="edit-product-name"/>
+export const editProductModel: (product: IProduct) => string = product => {
+	const productsCategory = productsCategories()
 
-			<label for="edit-product-price">Preço</label>
-			<input class="form-element" type="number" value="${product.price}" id="edit-product-price"/>
+	return `
+		<form id="edit-product-form" class="form-edit-product">
+			<div class="form-edit-product__header">
+				<svg class="close">
+					<use xlink:href="src/assets/SVGs/sprite.svg#icon-circle-with-cross"></use>
+				</svg>
+			</div>
+			<div class="form-edit-product__inputs">
+				<label for="edit-product-name">Nome:</label>
+				<input class="form-element" type="text" value="${product.name}" id="edit-product-name"/>
 
-			<label for="edit-product-category">Categoria</label>
-			<select class="form-element" id="edit-product-category">
-				<option value="${product.category}" selected>${product.category}</option>
-				<option value="Alimentação">Alimentação</option>
-				<option value="Materias">Materias</option>
-				<option value="Vestuários">Vestuários</option>
-			</select>
+				<label for="edit-product-price">Preço</label>
+				<input class="form-element" type="number" value="${product.price}" id="edit-product-price"/>
 
-			<label for="edit-product-subcategory">Sub-categoria</label>
-			<select class="form-element" id="edit-product-subcategory">
-				<option value="${product.subCategory}" selected>${product.subCategory}</option>
-				<option value="false">Não Popular</option>
-			</select>
-			${product.top
-					? `
-						<label for="edit-product-top">Populario</label>
-						<select class="form-element" id="edit-product-top">
-							<option value="true" selected>Popular</option>
-							<option value="false">Não Popular</option>
-						</select>
-					` : `
-						<label for="edit-product-top">Populario</label>
-						<select class="form-element">
-							<option value="false" selected>Não Popular</option>
-							<option value="true">Popular</option>
-						</select>
-					`
-			}
-			<label for="edit-product-summary">Sumário</label>
-			<textarea class="form-element" id="edit-product-summary">${product.summary}</textarea>
-		</div>
-		<div class="form-edit-product__images">
-			<img src="${product.img__url}" />
-			<input type="file"/> 
-		</div>
-		<button class="form-edit-product__submit" type="submit">Atualizar</button>
-	</form>
-`
- 
-export const createProductModalTemp: string = `
-	<form id="add-new-product" class="add-new-product">
-		<div class="add-new-product__header">
-			<svg class="close">
-				<use xlink:href="src/assets/SVGs/sprite.svg#icon-circle-with-cross"></use>
-			</svg>
-		</div>
-		<div class="add-new-product__inputs">
-			<label for="add-product-name">Nome:</label>
-			<input class="form-element" type="text" id="add-product-name"/>
+				<label for="edit-product-category">Categoria</label>
+				<select class="form-element" id="edit-product-category">
+					<option value="${product.category}" selected>${product.category}</option>
+					<option value="Alimentação">Alimentação</option>
+					<option value="Materias">Materias</option>
+					<option value="Vestuários">Vestuários</option>
+				</select>
 
-			<label for="add-product-price">Preço</label>
-			<input class="form-element" type="number" id="add-product-price"/>
+				<label for="edit-product-subcategory">Sub-categoria</label>
+				<select class="form-element" id="edit-product-subcategory">
+					<option value="${product.subCategory}" selected>${product.subCategory}</option>
+					<option value="false">Não Popular</option>
+				</select>
+				${product.top
+						? `
+							<label for="edit-product-top">Populario</label>
+							<select class="form-element" id="edit-product-top">
+								<option value="true" selected>Popular</option>
+								<option value="false">Não Popular</option>
+							</select>
+						` : `
+							<label for="edit-product-top">Populario</label>
+							<select class="form-element">
+								<option value="false" selected>Não Popular</option>
+								<option value="true">Popular</option>
+							</select>
+						`
+				}
+				<label for="edit-product-summary">Sumário</label>
+				<textarea class="form-element" id="edit-product-summary">${product.summary}</textarea>
+			</div>
+			<div class="form-edit-product__images">
+				<img src="${product.img__url}" />
+				<input type="file"/> 
+			</div>
+			<button class="form-edit-product__submit" type="submit">Atualizar</button>
+		</form>
+	`
+}
 
-			<label for="add-product-category">Categoria</label>
-			<select class="form-element" id="add-product-category">
-				<option value="Eletronicos">Eletronicos</option>
-				<option value="Alimentos">Alimentos</option>
-				<option value="Materias">Materias</option>
-				<option value="Vestuários">Vestuários</option>
-			</select>
+export const createProductModalTemp: () => string = () => {
+	const Categorires = productsCategories()
 
-			<label for="add-product-subcategory">Sub-categoria</label>
-			<select class="form-element" id="add-product-subcategory">
-				<option value="Computador">Computador</option>
-				<option value="Teclado">Teclado</option>
-				<option value="Relogio">Relogio</option>
-			</select>  
+	return `
+		<form id="add-new-product" class="add-new-product">
+			<div class="add-new-product__header">
+				<svg class="close">
+					<use xlink:href="src/assets/SVGs/sprite.svg#icon-circle-with-cross"></use>
+				</svg>
+			</div>
+			<div class="add-new-product__inputs">
+				<label for="add-product-name">Nome:</label>
+				<input class="form-element" type="text" id="add-product-name"/>
 
-			<label for="add-product-top">Populario</label>
-			<select class="form-element" id="add-product-top">
-				<option value="true">Popular</option>
-				<option value="false">Não Popular</option>
-			</select> 
-			<label for="add-product-summary">Sumário</label>
-			<textarea class="form-element" id="add-product-summary"></textarea>
-		</div>
-		<div class="add-new-product__images noimg">
-			<img  />
-			<input type="file" id="add-product-file" /> 
-		</div>
-		<button class="add-new-product__submit" type="submit">Adicionar</button>
-	</form>
-`	
+				<label for="add-product-price">Preço</label>
+				<input class="form-element" type="number" id="add-product-price"/>
+
+				<label for="add-product-category">Categoria</label>
+				<select class="form-element" id="add-product-category"> 
+					${Categorires.map(({ name }) => `	
+						<option value="${name[0]}">${name[0]}</option>
+					`)}
+				</select>
+
+				<label for="add-product-subcategory">Sub-categoria</label>
+				<select class="form-element" id="add-product-subcategory"> 
+					${Categorires[0].subCategories.map((item) => `	
+						<option value="${item}">${item}</option>
+					`)}
+				</select>  
+
+				<label for="add-product-top">Populario</label>
+				<select class="form-element" id="add-product-top">
+					<option value="true">Popular</option>
+					<option value="false">Não Popular</option>
+				</select> 
+				<label for="add-product-summary">Sumário</label>
+				<textarea class="form-element" id="add-product-summary"></textarea>
+			</div>
+			<div class="add-new-product__images noimg">
+				<img  />
+				<input type="file" id="add-product-file" /> 
+			</div>
+			<button class="add-new-product__submit" type="submit">Adicionar</button>
+		</form>
+	`
+}	

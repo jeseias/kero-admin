@@ -1,5 +1,6 @@
 import App from '../App'
 import { alertUser } from './Alert'
+import api from '../services/api'
 
 import { APICommunicator } from '../Utils/API'
 
@@ -48,8 +49,12 @@ export const saveUser: (admin: IAdmin) => void =  (admin) => {
 // }
 
 export const loginAdmin: (email: string, password: string) => Promise<void> = async (email, password) => {
-  const { data: { token, data: { user } } } = await AuthAPI('users/login')
-    .store<AdminLogin, IAuthRes<IAdmin>>({ email, password }, 'Estas logado')
+  // const { data: { token, data: { user } } } = await AuthAPI('/users/login')
+  //   .store<AdminLogin, IAuthRes<IAdmin>>({ email, password }, 'Estas logado') 
+  // const res = await AuthAPI('/users/login')
+  //   .store<AdminLogin, IAuthRes<IAdmin>>({ email, password }, 'Estas logado') 
+
+  const { data: { token, data: { user } } } = await api.post('/users/login', { email, password })
 
   const Admin: IAdmin = {
     ...user,
