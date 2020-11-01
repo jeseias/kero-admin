@@ -9,7 +9,7 @@ const {
   allClientesContainer
 } = DOM.pages.clients
 
-const headerSetup: (total: number) => void = (total) => totalClients.textContent = `${total} Clientes cadastrados na plataforma`
+const headerSetup: (total: number) => void = (total) => totalClients.textContent = `${total} Clientes`
 
 
 const showAllUser: (clients: IUser[]) => Promise<void> = async (clients) => {
