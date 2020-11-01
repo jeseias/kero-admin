@@ -4,7 +4,14 @@
 
   &__header {
 
+    padding: 1rem; 
     @include HeaderBottomLine;
+
+    h1 {
+      color: $color-dark;
+      font-weight: bold;
+      font-size: 2rem;
+    }
   }
 
   &__all {
@@ -25,13 +32,13 @@
       &__name {
         display: inline-block;
         width: auto;
-        color: $color-dark;
+        color: $color-primary;
         margin-right: 2rem;
       }
 
       &__badge {
-        background: $color-dark;
-        color: $color-white;
+        background: $color-secondary;
+        color: $color-dark;
         border-radius: 2px;
         font-weight: bold;
         padding: .3rem .5rem;
@@ -41,6 +48,7 @@
         margin-top: 1rem;
         font-size: 1.5rem;
         font-weight: bold;
+        color: $color-dark;
       }
 
       &__delete {
@@ -49,12 +57,12 @@
         right: .5rem;
         width: 2rem;
         height: 2rem;
-        fill: $color-grey-dark;
+        fill: $color-red;
 
         @include Transition;
 
         &:hover {
-          fill: $color-red;
+          fill: $color-dark;
           cursor: pointer;
         }
       }

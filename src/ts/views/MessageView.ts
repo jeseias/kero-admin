@@ -8,8 +8,8 @@ const {
   allMessagesContainer
 } = DOM.pages.messages
 
-const headerSetup: () => void = () => {
-
+const headerSetup: (total: number) => void = total => {
+  totalMessages.textContent = `${total} Mensagens`
 }
 
 const showAllMessages: (messages: IMessage[]) => Promise<void> = async (messages) => {
@@ -30,7 +30,7 @@ const showAllMessages: (messages: IMessage[]) => Promise<void> = async (messages
 }
 
 export const mountMessagePage: (messages: IMessage[]) => Promise<void> = async (messages) => {
-  headerSetup()
+  headerSetup(messages.length)
 
   await showAllMessages(messages)
 }
