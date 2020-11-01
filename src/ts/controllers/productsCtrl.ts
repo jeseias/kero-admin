@@ -146,12 +146,14 @@ const productListenerCtrl: () => Promise<void> = async () => {
 				])
 
 				if (!summary.value) return alertUser(false, 'O summario')
-				if (!img) return alertUser(false, 'A imagen')
+        if (!img) return alertUser(false, 'A imagen')
+        
+        console.log(subcategory.selectedOptions[0].value)
 
 				data.append('name', name.value)
 				data.append('price', price.value)
 				data.append('category', category.selectedOptions[0].value)
-				data.append('subcategory', subcategory.selectedOptions[0].value)
+				data.append('subCategory', subcategory.selectedOptions[0].value)
 				data.append('top', top.selectedOptions[0].value)
 				data.append('summary', summary.value)
 				data.append('imageCover', img)

@@ -19,7 +19,8 @@ export const productsCategories: () => IProductItem[] = () => {
       'Telas',
       'Teclados',
       'Cameras',
-      'Telefones'
+      'Telefones',
+      'Monitores',
     ]
   }
 
@@ -29,7 +30,13 @@ export const productsCategories: () => IProductItem[] = () => {
       'Fast Food',
       'Doces',
       'Salgados',
-      'Italianos'
+      'Italianos',
+      'Carne',
+      'Peixe',
+      'Mar',
+      'Pratos Tradicionais',
+      'Outros',
+      'Internacional',
     ]
   }
 
@@ -51,7 +58,8 @@ export const productsCategories: () => IProductItem[] = () => {
       'Calsas',
       'Pijamas',
       'Fatos',
-      'Social'
+      'Social',
+      'Casual',
     ]
   }
 

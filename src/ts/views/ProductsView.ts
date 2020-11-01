@@ -40,6 +40,10 @@ export const mountProducts: (products: IProduct[]) => void = products => {
 export const editProductModel: (product: IProduct) => string = product => {
 	const productsCategory = productsCategories()
 
+	const activeCategory = productsCategory.filter(item => item.name[0] === product.category)[0]
+
+	console.log(activeCategory)
+
 	return `
 		<form id="edit-product-form" class="form-edit-product">
 			<div class="form-edit-product__header">
@@ -64,8 +68,15 @@ export const editProductModel: (product: IProduct) => string = product => {
 
 				<label for="edit-product-subcategory">Sub-categoria</label>
 				<select class="form-element" id="edit-product-subcategory">
-					<option value="${product.subCategory}" selected>${product.subCategory}</option>
-					<option value="false">Não Popular</option>
+					${activeCategory.subCategories.map(item => {
+						return item === product.subCategory 
+							? `
+								<option value="${item}" selected >${item}</option>
+							` 
+							: `
+								<option value="${item}">${item}</option>
+							`
+					})}
 				</select>
 				${product.top
 						? `
@@ -76,7 +87,7 @@ export const editProductModel: (product: IProduct) => string = product => {
 							</select>
 						` : `
 							<label for="edit-product-top">Populario</label>
-							<select class="form-element">
+							<select class="form-element" id="edit-product-top">
 								<option value="false" selected>Não Popular</option>
 								<option value="true">Popular</option>
 							</select>
@@ -114,7 +125,7 @@ export const createProductModalTemp: () => string = () => {
 				<label for="add-product-category">Categoria</label>
 				<select class="form-element" id="add-product-category"> 
 					${Categorires.map(({ name }) => `	
-						<option value="${name[0]}">${name[0]}</option>
+						<option value="${name[0]}">${name[1]}</option>
 					`)}
 				</select>
 
