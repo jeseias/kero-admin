@@ -19,7 +19,7 @@
 
 .products {
   display: grid;
-  grid-template-rows: 6rem 1fr;
+  grid-template-rows: max-content 1fr;
   padding-bottom: 1rem;
   height: 100%;
 
@@ -37,6 +37,42 @@
         color: 2rem;
         font-weight: bold;
         color: $color-dark;
+        font-size: 2rem;
+      }
+
+      .type {
+        display: inline-block;
+        padding: .3rem .7rem;
+        border-radius: .2rem;
+        color: $color-white;
+        margin: 1rem .5rem 1rem 0;
+        font-weight: bold;
+        text-transform: uppercase;
+  
+        &--elec {
+          background: $color-primary;
+        }
+  
+        &--food {
+          background: $color-red;
+        }
+  
+        &--mate {
+          background: $color-secondary;
+          color: $color-dark;
+        }
+  
+        &--colt {
+          background: $color-dark;
+        }
+      }
+    }
+
+    .action {
+
+      select {
+        margin-top: 1rem;
+        border: 2px solid $color-dark;
       }
     }
   }

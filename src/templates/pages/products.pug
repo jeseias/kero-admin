@@ -2,10 +2,21 @@ section.page.products#products
   .products__header
     .info
       p.items 15 Produtos Cadastrados
+      .types 
+        span.type.type--elec Electricos - 15
+        span.type.type--food Alimentos - 12
+        span.type.type--mate Materias - 15
+        span.type.type--colt Roupa - 12
     .action
       button.products__add-btn
         svg 
           use(xlink:href=`src/assets/SVGs/sprite.svg#icon-plus`) 
         span Products
+      select.form-element
+        option(value="all") Todos
+        option(value="eletronicos") Eletronicos
+        option(value="alimentos") Alimentação 
+        option(value="materias") Materias
+        option(value="vestuarios") Vestuários
   .products__all
    h1 This is the product page

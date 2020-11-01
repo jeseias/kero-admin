@@ -5,14 +5,24 @@ import { textShorter, addChildren } from '../views/View'
 
 import { IProduct } from '../constants/interfaces'
 
-export const mountProducts: (products: IProduct[]) => void = products => {
+export const mountProducts: (products: IProduct[], filterProducts: IProduct[]) => void = (products, filterProducts) => {
 	const { 
 		allProducts,
-		header: { itemsLength } 
+		header: { 
+			itemsLength,
+			types: { elec, food, mate, colt } 
+		} 
 	} = DOM.pages.products
+
+	const getCategoryLength: (category: string) => number = 
+		category => products.filter(item => item.category === category).length
 
 	// 1) Display Data
 	itemsLength.textContent = `${products.length} Productos cadastrados`
+	elec.textContent = `Eletronicos - ${getCategoryLength('eletronicos')}`
+	food.textContent = `Alimentação - ${getCategoryLength('alimentos')}`
+	mate.textContent = `Materias - ${getCategoryLength('materias')}`
+	colt.textContent = `Vestuários - ${getCategoryLength('vestuarios')}`
 
 	// 2) Display All products
 	const temp: (data: IProduct) => string = data => `
@@ -34,7 +44,7 @@ export const mountProducts: (products: IProduct[]) => void = products => {
 		</div>  
 	`
 
-	addChildren(allProducts, products, temp, 'afterbegin')
+	addChildren(allProducts, filterProducts, temp, 'afterbegin')
 } 
 
 export const editProductModel: (product: IProduct) => string = product => {

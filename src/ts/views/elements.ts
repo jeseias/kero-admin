@@ -82,7 +82,14 @@ export default {
       allProducts: <HTMLDivElement>$(`${products} .products__all`),
       header: {
         itemsLength: <HTMLParagraphElement>$(`${products} .info .items`),
-        addBtn: <HTMLButtonElement>$(`${products} .products__add-btn`)
+        addBtn: <HTMLButtonElement>$(`${products} .products__add-btn`),
+        category: <HTMLSelectElement>$(`${products} .action select`),
+        types: {
+          elec: <HTMLButtonElement>$(`${products} .type.type--elec`),
+          food: <HTMLButtonElement>$(`${products} .type.type--food`),
+          mate: <HTMLButtonElement>$(`${products} .type.type--mate`),
+          colt: <HTMLButtonElement>$(`${products} .type.type--colt`),
+        }
       }
     },
     clients: {

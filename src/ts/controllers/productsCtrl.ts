@@ -22,7 +22,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
       subCategorySelector }
   } = afterDOM.pages.products
   
-  const chageCategory: () => void = () => {
+  const changeCategory: () => void = () => {
     const selector = categorySelector()
     const subSelector = subCategorySelector()
 
@@ -114,7 +114,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
   const addNewProductCtrl: () => Promise<void> = async () => {
     addBtn.addEventListener('click', () => {
       showModal(createProductModalTemp())
-      chageCategory()
+      changeCategory()
 
 			const form = productForm();
 			const name = <HTMLInputElement>form.querySelector('#add-product-name')
@@ -191,11 +191,21 @@ const productListenerCtrl: () => Promise<void> = async () => {
 }
 
 export const productsPageCtrl: () => Promise<void> = async () => {
+  const {
+    header: { category }
+  } = DOM.pages.products
   // 1) Get all my products
   const Products = await getAllProducts()
 
   // 2) Mount the products page
-  mountProducts(Products)
+  const filterProducts: (items: IProduct[], category?: string) => IProduct[] = 
+    (items, category) => items.filter(item => category !== 'all' ? item.category === category : item)
+
+  mountProducts(Products, filterProducts(Products, category.value))
+
+  category.addEventListener('change', () => { 
+    mountProducts(Products, filterProducts(Products, category.value))
+  })
 
   // 3) Edit product listner
   await productListenerCtrl()
