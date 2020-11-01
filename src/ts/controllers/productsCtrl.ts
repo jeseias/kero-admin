@@ -2,11 +2,11 @@ import App from '../App'
 
 import { hideModal, showModal } from '../models/Modal'
 
-import { ProductsAPI, deleteProduct, editProduct, updateProduct, createProduct } from '../models/Products'
+import { ProductsAPI, deleteProduct, editProduct, updateProduct, createProduct, productsCategories } from '../models/Products'
 
 import { mountProducts, createProductModalTemp } from '../views/ProductsView'
 import DOM, { afterDOM } from '../views/elements'
-import { userInputNotifacation } from '../views/View'
+import { userInputNotifacation, removeChildren } from '../views/View'
 
 import { IProduct } from '../constants/interfaces'
 import { alertUser } from '../models/Alert'
@@ -18,8 +18,24 @@ const productListenerCtrl: () => Promise<void> = async () => {
   const { allProductCards } = afterDOM.pages.products
   const { 
 		editProductModal: { changeImgInput, imageCoverContainer, productUpdateForm },
-		newProduct: { productForm, addProductBtn, newProductImg, newProductImgInput, newProductImgInputContainer }
-	} = afterDOM.pages.products
+    newProduct: { productForm, newProductImg, newProductImgInput, newProductImgInputContainer, categorySelector, 
+      subCategorySelector }
+  } = afterDOM.pages.products
+  
+  const chageCategory: () => void = () => {
+    const selector = categorySelector()
+    const subSelector = subCategorySelector()
+
+    selector.addEventListener('change', () => {
+      const activeOption = Array.from(selector.selectedOptions)[0].value
+      const activeCategory = productsCategories().filter(item => item.name[0] === activeOption)[0]
+
+      removeChildren(subSelector)
+      activeCategory.subCategories.forEach(value => subSelector.insertAdjacentHTML('afterbegin', `
+        <option value="${value}">${value}</option>
+      `))
+    })
+  }
 
 	const swicthProductImg: (input: HTMLInputElement, img: HTMLImageElement, imgContainer?: HTMLDivElement) => void = 
 		(input, img, imgContainer) => {
@@ -97,7 +113,8 @@ const productListenerCtrl: () => Promise<void> = async () => {
 
   const addNewProductCtrl: () => Promise<void> = async () => {
     addBtn.addEventListener('click', () => {
-			showModal(createProductModalTemp())
+      showModal(createProductModalTemp())
+      chageCategory()
 
 			const form = productForm();
 			const name = <HTMLInputElement>form.querySelector('#add-product-name')

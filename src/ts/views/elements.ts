@@ -28,6 +28,8 @@ export const afterDOM = {
         newProductImgInput: () => <HTMLInputElement>$(`.modal .add-new-product__images input`),
         newProductImgInputContainer: () => <HTMLInputElement>$(`.modal .add-new-product__images`),
         newProductImg: () => <HTMLImageElement>$(`.modal .add-new-product__images img`),
+        categorySelector: () => <HTMLSelectElement>$(`.modal .add-new-product select#add-product-category`),
+        subCategorySelector: () => <HTMLSelectElement>$(`.modal .add-new-product select#add-product-subcategory`),
       }
     }
   }
