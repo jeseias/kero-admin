@@ -31,6 +31,10 @@ export const afterDOM = {
         categorySelector: () => <HTMLSelectElement>$(`.modal .add-new-product select#add-product-category`),
         subCategorySelector: () => <HTMLSelectElement>$(`.modal .add-new-product select#add-product-subcategory`),
       }
+    },
+    messages: {
+      allMessages: () => <HTMLDivElement[]>Array.from($$(`${messages} .message-card`)),
+      deleteMsgBtn: () => <HTMLElement[]>Array.from($$(`${messages} .message-card .message-card__delete`)),
     }
   }
 }

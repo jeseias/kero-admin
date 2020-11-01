@@ -6,6 +6,7 @@ export interface IMessage {
   name: string 
   number: number 
   message: string  
+  _id: string
 }
 
 export interface IProduct {
