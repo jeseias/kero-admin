@@ -1,7 +1,7 @@
 import { loginAdmin } from '../models/Auth'
 
 import DOM from '../views/elements'
-import { userInputNotifacation } from '../views/View'
+import { userInputNotification } from '../views/View'
 
 export const loginCtrl: () => void = () => {
   const { form: { self: form, email, password } } = DOM.loginPage
@@ -15,7 +15,7 @@ export const loginCtrl: () => void = () => {
 
     e.preventDefault()
 
-    const isValidated = userInputNotifacation([
+    const isValidated = userInputNotification([
       [email, 'O seu email'],
       [password, 'A sua senha']
     ])

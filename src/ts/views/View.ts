@@ -58,7 +58,7 @@ export const addChild: <T>(
     parent.insertAdjacentHTML(where || 'afterbegin', tempGenerator(data))
   }
 
-export const userInputNotifacation: (args: [HTMLInputElement | HTMLSelectElement, string][]) => boolean = (input) => {
+export const userInputNotification: (args: [HTMLInputElement | HTMLSelectElement, string][]) => boolean = (input) => {
   return input.every(element => {
     if (!element[0].value)  {
       alertUser(false, element[1])

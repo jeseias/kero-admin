@@ -85,6 +85,7 @@ export default {
         itemsLength: <HTMLParagraphElement>$(`${products} .info .items`),
         addBtn: <HTMLButtonElement>$(`${products} .products__add-btn`),
         category: <HTMLSelectElement>$(`${products} .action select`),
+        searchInput: <HTMLInputElement>$(`${products} .products__search-input`),
         types: {
           elec: <HTMLButtonElement>$(`${products} .type.type--elec`),
           food: <HTMLButtonElement>$(`${products} .type.type--food`),

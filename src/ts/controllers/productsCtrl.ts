@@ -6,7 +6,7 @@ import { ProductsAPI, deleteProduct, editProduct, updateProduct, createProduct, 
 
 import { mountProducts, createProductModalTemp } from '../views/ProductsView'
 import DOM, { afterDOM } from '../views/elements'
-import { userInputNotifacation, removeChildren } from '../views/View'
+import { userInputNotification, removeChildren } from '../views/View'
 
 import { IProduct } from '../constants/interfaces'
 import { alertUser } from '../models/Alert'
@@ -37,7 +37,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
     })
   }
 
-	const swicthProductImg: (input: HTMLInputElement, img: HTMLImageElement, imgContainer?: HTMLDivElement) => void = 
+	const switchProductImg: (input: HTMLInputElement, img: HTMLImageElement, imgContainer?: HTMLDivElement) => void = 
 		(input, img, imgContainer) => {
 			const currentImg = img.src
 
@@ -71,7 +71,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
 
       const coverImage = file.files![0]
 
-      const validated = userInputNotifacation([
+      const validated = userInputNotification([
         [name, 'O nome'],
         [price, 'O preço']
       ])   
@@ -125,7 +125,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
 			const summary = <HTMLTextAreaElement>form.querySelector('#add-product-summary')
 			const file = <HTMLInputElement>form.querySelector('#add-product-file')
 
-			swicthProductImg(
+			switchProductImg(
 				newProductImgInput(), 
 				newProductImg(), 
 				newProductImgInputContainer()
@@ -137,7 +137,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
 				const img = file.files![0]
 				const data = new FormData()
 
-				userInputNotifacation([
+				userInputNotification([
 					[name, 'O nome'],
 					[price, 'O preco'],
 					[category, 'A category'],
@@ -179,7 +179,7 @@ const productListenerCtrl: () => Promise<void> = async () => {
     editBtn.addEventListener('click', async () => {
       await editProduct(getProductID(editBtn))
 
-      swicthProductImg(changeImgInput(), imageCoverContainer())    // To switch the current image
+      switchProductImg(changeImgInput(), imageCoverContainer())    // To switch the current image
       updateProductCtrl(getProductID(editBtn))       // Once the update BTN is cleaned
     })
 
@@ -188,6 +188,29 @@ const productListenerCtrl: () => Promise<void> = async () => {
       await deleteProduct(getProductID(delBtn))
     })
   })
+}
+
+const searchFilterProducts: () => void = () => {
+  const { searchInput } = DOM.pages.products.header
+  const { allProductCards } = afterDOM.pages.products
+
+  searchInput.addEventListener('keyup', () => {
+    const currentValue = searchInput.value.toLowerCase();
+    const productCards = allProductCards();
+
+    productCards.forEach(product => {
+      const nameParagraph = <HTMLParagraphElement>product.querySelector('.product-card__name')
+      const cardName = nameParagraph.dataset.name!.toLowerCase()
+
+      console.log(currentValue, cardName)
+
+      if (cardName.indexOf(currentValue) > -1) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  });
 }
 
 export const productsPageCtrl: () => Promise<void> = async () => {
@@ -207,6 +230,10 @@ export const productsPageCtrl: () => Promise<void> = async () => {
     mountProducts(Products, filterProducts(Products, category.value))
   })
 
+
   // 3) Edit product listner
   await productListenerCtrl()
+
+  //filter products
+  searchFilterProducts()
 }

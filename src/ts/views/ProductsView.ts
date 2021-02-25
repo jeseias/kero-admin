@@ -29,7 +29,7 @@ export const mountProducts: (products: IProduct[], filterProducts: IProduct[]) =
 	const temp: (data: IProduct) => string = data => `
 		<div class="product-card" id="product-${data.id}">
 			<div class="product-card__img" style="background-image: url(${data.img__url})"></div>
-			<p class="product-card__name">${data.name}</p>
+			<p class="product-card__name" data-name="${data.name}">${data.name}</p>
 			<p class="product-card__summary">${textShorter(80, data.summary)}</p>
 			<div class="product-card__footer">
 				<span class="product-card__price">${formatMoney(data.price)}</span>
