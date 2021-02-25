@@ -8,6 +8,7 @@ const orders = `.page.orders#orders`
 const products = `.page.products#products`
 const clients = `.page.clients#clients`
 const messages = `.page.messages#messages`
+const home = `.page.home#home`
 
 export const afterDOM = {
   pages: {

@@ -12,8 +12,10 @@ const hideModal: () => void =
       const el = <HTMLDivElement>e.target
       if (el && el.classList.contains('modal')) {
         closeModel(el)
+      } else if (el && el.closest('.close')) {
+        closeModel(<HTMLDivElement>el.closest('.modal'))
       }
-    })
+    }) 
   }
 
 export const displayModal: (
@@ -25,9 +27,15 @@ export const displayModal: (
         ${temp}
       </div>
     `
+
+    const isTheAModal = document.querySelector('.modal')
+
     document.body.insertAdjacentHTML('afterbegin', modalTemp)
     setTimeout(() => {
-      document.body.querySelector('.modal')?.classList.add('visible')
+      if (isTheAModal) {
+        isTheAModal.parentElement!.removeChild(isTheAModal)
+      }
+      document.body.querySelector('.modal')!.classList.add('visible')
     }, 250)
 
     hideModal()

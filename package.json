@@ -13,6 +13,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
+    "@types/dinero.js": "^1.6.5",
     "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -34,7 +35,8 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "dinero.js": "^1.8.1"
   },
   "browserslist": [
     "last 10 version",

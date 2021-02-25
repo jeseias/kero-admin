@@ -4,6 +4,7 @@ import DOM from '../views/elements'
 import { textShorter, addChildren } from '../views/View'
 
 import { IProduct } from '../constants/interfaces'
+import { formatMoney } from '../Utils/logic'
 
 export const mountProducts: (products: IProduct[], filterProducts: IProduct[]) => void = (products, filterProducts) => {
 	const { 
@@ -31,7 +32,7 @@ export const mountProducts: (products: IProduct[], filterProducts: IProduct[]) =
 			<p class="product-card__name">${data.name}</p>
 			<p class="product-card__summary">${textShorter(80, data.summary)}</p>
 			<div class="product-card__footer">
-				<span class="product-card__price">${data.price} KZ</span>
+				<span class="product-card__price">${formatMoney(data.price)}</span>
 				<div>
 					<svg class="product-card__delete" id="product-edit-btn">
 						<use xlink:href="src/assets/SVGs/sprite.svg#icon-stack"></use>

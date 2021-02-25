@@ -77,6 +77,14 @@
     }
   }
 
+  &__search-input {
+    color: $color-dark;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   &__add-btn {
     display: grid;
     grid-template-columns: max-content 1fr;
